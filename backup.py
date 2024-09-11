@@ -29,7 +29,7 @@ def local_backup():
 
 def remote_backup():
     c = Connection('config.json', 'hostkey.ppk', 'private_key.ppk')
-    dir_exclusions = ['.git', '.vs', 'Logs', 'Temp']
+    dir_exclusions = ['.git', '.vs', 'Logs', 'Temp', 'Artifacts']
     file_suffix_exclusions = ['lock']
     c.upload_dir(source, 'IntrepidDescent', dir_exclusions=dir_exclusions,
                  file_suffix_exclusions=file_suffix_exclusions)
