@@ -6,6 +6,7 @@ from sftp_pi.connection import Connection
 
 
 source = r'H:\Unity Projects\Combo Enchantment Dungeon Crawler'
+local_path_2 = ''  # secondary local disk location, used on the receiving machine
 
 def local_backup():
     exceptions = ''
@@ -33,6 +34,10 @@ def remote_backup():
     file_suffix_exclusions = ['lock']
     c.upload_dir(source, 'IntrepidDescent', dir_exclusions=dir_exclusions,
                  file_suffix_exclusions=file_suffix_exclusions)
+
+def download_backup():
+    c = Connection('config.json', 'hostkey.ppk', 'private_key.ppk')
+    c.download('IntrepidDescent', local_path_2)
 
 
 local_backup()
