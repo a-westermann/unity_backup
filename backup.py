@@ -2,11 +2,13 @@ from datetime import datetime
 import os
 import shutil
 from distutils.dir_util import copy_tree
+import sys
+sys.path.insert(0,'C:\\Users\\Andrew\\Code Projects\\sftp_pi\\sftp_pi')
 from sftp_pi.connection import Connection
 
 
 source = r'H:\Unity Projects\Combo Enchantment Dungeon Crawler'
-local_path_2 = ''  # secondary local disk location, used on the receiving machine
+local_path_2 = r'C:\Users\Andrew\Code Projects\Intrepid_Descent'
 
 def local_backup():
     exceptions = ''
@@ -37,8 +39,10 @@ def remote_backup():
 
 def download_backup():
     c = Connection('config.json', 'hostkey.ppk', 'private_key.ppk')
-    c.download('IntrepidDescent', local_path_2)
+    c.download('Desktop', local_path_2)
 
 
-local_backup()
-remote_backup()
+# local_backup()
+# remote_backup()
+download_backup()
+
